@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Когенераційна установка - Моніторинг</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Когенераційна установка</h1>
+      <p>Моніторинг параметрів роботи в режимі реального часу</p>
+      <p>Останнє оновлення: <span id="lastUpdate">--:--:--</span></p>
+    </header>
+
+    <section class="controls">
+      <button id="updateBtn" class="btn btn-primary">Оновити</button>
+      <button id="autoUpdateBtn" class="btn btn-success">Увімкнути автооновлення</button>
+      <span id="autoStatus">Автооновлення вимкнено</span>
+    </section>
+
+    <main class="dashboard">
+      <section class="card">
+        <h2>Електрична потужність</h2>
+        <div class="value">
+          <span id="electricPower">0</span>
+          <span class="unit">кВт</span>
+        </div>
+        <div id="electricPowerStatus" class="status">●</div>
+        <p class="range">Норма: 300–900 кВт</p>
+      </section>
+
+      <section class="card">
+        <h2>Теплова потужність</h2>
+        <div class="value">
+          <span id="thermalPower">0</span>
+          <span class="unit">кВт</span>
+        </div>
+        <div id="thermalPowerStatus" class="status">●</div>
+        <p class="range">Норма: 400–1000 кВт</p>
+      </section>
+
+      <section class="card">
+        <h2>Загальний ККД</h2>
+        <div class="value">
+          <span id="efficiency">0</span>
+          <span class="unit">%</span>
+        </div>
+        <div id="efficiencyStatus" class="status">●</div>
+        <p class="range">Норма: 80–88%</p>
+      </section>
+
+      <section class="card">
+        <h2>Температура димових газів</h2>
+        <div class="value">
+          <span id="exhaustTemperature">0</span>
+          <span class="unit">°C</span>
+        </div>
+        <div id="exhaustTemperatureStatus" class="status">●</div>
+        <p class="range">Норма: 120–160 °C</p>
+      </section>
+    </main>
+
+    <section class="extra-info">
+      <div class="info-card">
+        <h3>Режим роботи</h3>
+        <p id="operationMode">--</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Економія первинної енергії</h3>
+        <p><span id="energySaving">0</span>%</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Час роботи до ТО</h3>
+        <p><span id="maintenanceTime">0</span> год</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
