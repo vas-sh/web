@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REST API ДГУ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <h1>REST API дизель-генераторних установок</h1>
+        <p class="subtitle">
+          Моніторинг стану двигуна, рівня палива та параметрів генерованої електроенергії.
+        </p>
+      </div>
+      <button id="refreshBtn" class="btn secondary">Оновити дані</button>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Додати ДГУ</h2>
+
+        <form id="generatorForm" class="form">
+          <label>
+            Назва установки
+            <input name="name"/>
+          </label>
+
+          <div class="grid-2">
+            <label>
+              Номінальна потужність, кВт
+              <input name="ratedPower" type="number" required min="1" value="100" />
+            </label>
+
+            <label>
+              Поточна потужність, кВт
+              <input name="currentPower" type="number" required min="0" value="0" />
+            </label>
+          </div>
+
+          <div class="grid-2">
+            <label>
+              Напруга, В
+              <input name="voltage" type="number" required value="400" />
+            </label>
+
+            <label>
+              Частота, Гц
+              <input name="frequency" type="number" required value="50" />
+            </label>
+          </div>
+
+          <div class="grid-2">
+            <label>
+              Рівень палива, %
+              <input name="fuelLevel" type="number" required min="0" max="100" value="80" />
+            </label>
+
+            <label>
+              Статус
+              <select name="status" required>
+                <option value="standby">standby</option>
+                <option value="running">running</option>
+                <option value="fault">fault</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="grid-2">
+            <label>
+              Обороти двигуна, об/хв
+              <input name="engineSpeed" type="number" required value="0" />
+            </label>
+
+            <label>
+              Тиск мастила, бар
+              <input name="oilPressure" type="number" step="0.1" required value="0" />
+            </label>
+          </div>
+
+          <button class="btn primary" type="submit">Створити установку</button>
+        </form>
+
+        <p id="message" class="message"></p>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>Список генераторів</h2>
+
+          <select id="statusFilter">
+            <option value="">Усі статуси</option>
+            <option value="standby">standby</option>
+            <option value="running">running</option>
+            <option value="fault">fault</option>
+          </select>
+        </div>
+
+        <div id="generatorsList" class="cards"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
