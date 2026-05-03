@@ -1,0 +1,47 @@
+body {
+  background: #f4f6f8;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+.metric-card,
+.chart-card,
+.table-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 15px;
+}
+
+.metric-card h5 {
+  color: #666;
+  font-size: 15px;
+}
+
+.metric-card h2 {
+  margin: 0;
+  color: #0d6efd;
+}
+
+.status-normal {
+  color: #198754;
+  font-weight: bold;
+}
+
+.status-warning {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.status-danger {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+canvas {
+  max-height: 320px;
+}

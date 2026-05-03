@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Моніторинг інверторів СЕС</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container py-4">
+    <header class="mb-4">
+      <h1>Моніторинг інверторів сонячної електростанції</h1>
+      <p class="text-muted">
+        Клієнтський веб-додаток для отримання та візуалізації даних через REST API
+      </p>
+
+      <div class="d-flex gap-2 align-items-center flex-wrap">
+        <button id="refreshBtn" class="btn btn-primary">Оновити дані</button>
+        <button id="autoBtn" class="btn btn-success">Увімкнути автооновлення</button>
+        <span id="connectionStatus" class="badge bg-secondary">Очікування</span>
+        <span>Останнє оновлення: <strong id="lastUpdate">--:--:--</strong></span>
+      </div>
+    </header>
+
+    <section class="row mb-4">
+      <div class="col-md-3">
+        <div class="metric-card">
+          <h5>DC потужність</h5>
+          <h2><span id="totalDcPower">0</span> кВт</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="metric-card">
+          <h5>AC потужність</h5>
+          <h2><span id="totalAcPower">0</span> кВт</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="metric-card">
+          <h5>Середній ККД</h5>
+          <h2><span id="avgEfficiency">0</span>%</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="metric-card">
+          <h5>Якість AC</h5>
+          <h2 id="acQuality">--</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="row mb-4">
+      <div class="col-lg-6 mb-3">
+        <div class="chart-card">
+          <h4>Стовпчаста діаграма потужності інверторів</h4>
+          <canvas id="powerBarChart"></canvas>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-3">
+        <div class="chart-card">
+          <h4>Графік ККД інверторів</h4>
+          <canvas id="efficiencyLineChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="table-card">
+      <h4>Таблиця параметрів інверторів</h4>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>DC, кВт</th>
+              <th>AC, кВт</th>
+              <th>ККД, %</th>
+              <th>DC, В</th>
+              <th>AC, В</th>
+              <th>Частота, Гц</th>
+              <th>Температура, °C</th>
+              <th>Статус</th>
+            </tr>
+          </thead>
+          <tbody id="invertersTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
